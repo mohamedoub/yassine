@@ -1,7 +1,7 @@
 <?php require_once 'config/connect.php';
 $stmt = $conn->prepare("SELECT * FROM tbl_category");
 $stmt->execute();
-//var_dump($stmt->fetchAll());
+var_dump($stmt->fetchAll());
 ?>
 <!DOCTYPE html>
 <html lang="en">

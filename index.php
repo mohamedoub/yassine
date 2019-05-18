@@ -41,7 +41,7 @@ $stmt->execute();
 <nav id="navbar" class="navbar fixed-top navbar-expand-md shadow-sm  flex-nowrap navbar-new-top nv1">
     <div class="row">
         <div class="col-6">
-            <a href="/" class="navbar-brand"><img src="img/Seven_News.png" alt=""/></a>
+            <a href="#" class="navbar-brand"><img src="img/Seven_News.png" alt=""/></a>
         </div>
         <div class="col-6">
             <ul class="navbar-nav flex-row">

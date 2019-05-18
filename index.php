@@ -1,7 +1,6 @@
 <?php require_once 'config/connect.php';
 $stmt = $conn->prepare("SELECT * FROM tbl_category");
 $stmt->execute();
-var_dump($stmt->fetchAll());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +18,7 @@ var_dump($stmt->fetchAll());
 </head>
 <body>
 <div class="container-fluid con">
-    <div class="row">
+    <div class="row tophead">
         <div class="col-8 menu">
             <ul class="items1">
                 <li >Home</li>
@@ -39,21 +38,26 @@ var_dump($stmt->fetchAll());
     </div>
 </div>
     <!--Start Navbar -->
-<nav class="navbar fixed-top navbar-expand-md shadow-sm  flex-nowrap navbar-new-top nv1" style="position: relative;">
-    <a href="/" class="navbar-brand"><img src="img/Seven_News.png" alt=""/></a>
-    <ul class="nav navbar-nav mr-auto"></ul>
-    <ul class="navbar-nav flex-row">
-        <?php
-            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-        ?>
-        <li class="nav-item">
-            <a class="nav-link px-2"><?=$row->category_name ?></a>
-        </li>
-        <?php
-        }
-        ?>
+<nav id="navbar" class="navbar fixed-top navbar-expand-md shadow-sm  flex-nowrap navbar-new-top nv1">
+    <div class="row">
+        <div class="col-6">
+            <a href="/" class="navbar-brand"><img src="img/Seven_News.png" alt=""/></a>
+        </div>
+        <div class="col-6">
+            <ul class="navbar-nav flex-row">
+                <?php
+                while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link px-2"><?=$row->category_name ?></a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
 
-    </ul>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar2">
         <span class="navbar-toggler-icon"></span>
     </button>

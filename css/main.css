@@ -90,8 +90,10 @@ body {
     margin-top: 5px;
 }
 .nv1 {
+    position: relative;
     background: #e2e3e5;
     color: #000;
+    height: 114px;
 }
 .bd-example {
     margin-top: 5px;
@@ -162,9 +164,9 @@ p.ads_img {
 }
 
 .p1{
- 
 
- }
+
+}
 .p2{
 
 }
@@ -221,6 +223,15 @@ p.ads_img {
 .poptitle>span {
     font-size: 1.5rem;
 }
-.navbar-new-top ul {
-    margin-right: 20%;
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 74px;
+}
+.navbar-brand img {
+    width: 274px;
+    height: 30px;
+    overflow: hidden;
 }

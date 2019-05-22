@@ -226,6 +226,7 @@ $stmt->execute();
                         </div>
                     </div>
                 </div>
+                <h2 class="poptitle"><span>Popular Posts</span></h2>
 
             </div>
         </div>

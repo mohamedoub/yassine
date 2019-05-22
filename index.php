@@ -1,7 +1,7 @@
 <?php require_once 'config/connect.php';
 $stmt = $conn->prepare("SELECT * FROM tbl_category");
 $stmt->execute();
-echo "eeee";
+echo "eeeve";
 ?>
 <!DOCTYPE html>
 <html lang="en">

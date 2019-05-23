@@ -1,8 +1,6 @@
-<?php require_once 'config/connect.php';
-$stmt = $conn->prepare("SELECT * FROM tbl_category");
-$stmt->execute();
-echo "eeeve";
-?>
+<?php
+require_once "config/connect.php";
+require_once 'core/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +45,8 @@ echo "eeeve";
         <div class="col-6">
             <ul class="navbar-nav flex-row">
                 <?php
-                while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+
+                while ($row = getall("select * from tbl_category", PDO::FETCH_OBJ)) {
                     ?>
                     <li class="nav-item">
                         <a class="nav-link px-2"><?=$row->category_name ?></a>
@@ -83,26 +82,25 @@ echo "eeeve";
                     <h2>3 Delicious Post-Holiday Detox Recipes, Courtesy of Personal Chef</h2>
                 </div>
             </div>
+            <?php
+            $news = $conn->prepare("select * from tbl_news order by news_date DESC LIMIT 2");
+            $news->execute();
+            while ($rn = $news->fetch(PDO::FETCH_OBJ)) {
+
+                ?>
             <div class="carousel-item">
                 <img src="img/skysports-virgil-van-dijk-liverpool_4664562.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block crsl">
                     <div class="autor">
-                        <span class="autname"><img class="autavatar" src="http://1.gravatar.com/avatar/db6f032dce962144efc9b625779461a1?s=60&d=mm&r=g" alt="">Mohamed Oubaha</span>
-                        <span class="post-date">May 11,2019</span>
+                        <span class="autname"><img class="autavatar"
+                                                   src="http://1.gravatar.com/avatar/db6f032dce962144efc9b625779461a1?s=60&d=mm&r=g"
+                                                   alt=""><?= $rn->autor ?></span>
+                        <span class="post-date"><?= $rn->news_date ?></span>
                     </div>
-                    <h2>3 Delicious Post-Holiday Detox Recipes, Courtesy of Personal Chef</h2>
+                    <h2><?= $rn->news_title ?></h2>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="img/skysports-virgil-van-dijk-liverpool_4664562.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block crsl">
-                    <div class="autor">
-                        <span class="autname"><img class="autavatar" src="http://1.gravatar.com/avatar/db6f032dce962144efc9b625779461a1?s=60&d=mm&r=g" alt="">Mohamed Oubaha</span>
-                        <span class="post-date">May 11,2019</span>
-                    </div>
-                    <h2>3 Delicious Post-Holiday Detox Recipes, Courtesy of Personal Chef</h2>
-                </div>
-            </div>
+            <?php } ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -1,3 +1,8 @@
+<?php
+require_once "../core/classes/autoloader.class.php";
+require_once "../config/config.php";
+Autoloader::register();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,57 +42,9 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="nav-item  ">
-                    <a class="nav-link" href="./dashboard.html">
+                    <a class="nav-link" href="./index.php">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./user.html">
-                        <i class="material-icons">person</i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                <li class="nav-item active ">
-                    <a class="nav-link" href="./tables.html">
-                        <i class="material-icons">content_paste</i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./typography.html">
-                        <i class="material-icons">library_books</i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./icons.html">
-                        <i class="material-icons">bubble_chart</i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./map.html">
-                        <i class="material-icons">location_ons</i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./notifications.html">
-                        <i class="material-icons">notifications</i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./rtl.html">
-                        <i class="material-icons">language</i>
-                        <p>RTL Support</p>
-                    </a>
-                </li>
-                <li class="nav-item active-pro ">
-                    <a class="nav-link" href="./upgrade.html">
-                        <i class="material-icons">unarchive</i>
-                        <p>Upgrade to PRO</p>
                     </a>
                 </li>
             </ul>
@@ -177,135 +134,53 @@
                                     <table class="table">
                                         <thead class=" text-primary">
                                         <th>
-                                            ID
+                                            Name
                                         </th>
                                         <th>
-                                            Title
+                                            Type
                                         </th>
                                         <th>
-                                            Date
+                                            Email
                                         </th>
                                         <th>
-                                            Categorie
+                                            Status
                                         </th>
                                         <th>
-                                            auteur
+                                            Image
                                         </th>
                                         <th>
                                             controle
                                         </th>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                Dakota Rice
-                                            </td>
-                                            <td>
-                                                Niger
-                                            </td>
-                                            <td>
-                                                Oud-Turnhout
-                                            </td>
-                                            <td class="text-primary">
-                                                $36,738
-                                            </td>
-                                            <td class="text-primary">
-                                                <a href=""><img alt="" src="assets/img/edit.svg"></a>
-                                                <a href=""><img alt="" src="assets/img/delete.svg"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                Minerva Hooper
-                                            </td>
-                                            <td>
-                                                Curaçao
-                                            </td>
-                                            <td>
-                                                Sinaai-Waas
-                                            </td>
-                                            <td class="text-primary">
-                                                $23,789
-                                            </td>
-                                            <td class="text-primary">
-                                                <a href=""><img alt="" src="assets/img/edit.svg"></a>
-                                                <a href=""><img alt="" src="assets/img/delete.svg"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                Sage Rodriguez
-                                            </td>
-                                            <td>
-                                                Netherlands
-                                            </td>
-                                            <td>
-                                                Baileux
-                                            </td>
-                                            <td class="text-primary">
-                                                $56,142
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                Philip Chaney
-                                            </td>
-                                            <td>
-                                                Korea, South
-                                            </td>
-                                            <td>
-                                                Overland Park
-                                            </td>
-                                            <td class="text-primary">
-                                                $38,735
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                Doris Greene
-                                            </td>
-                                            <td>
-                                                Malawi
-                                            </td>
-                                            <td>
-                                                Feldkirchen in Kärnten
-                                            </td>
-                                            <td class="text-primary">
-                                                $63,542
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                6
-                                            </td>
-                                            <td>
-                                                Mason Porter
-                                            </td>
-                                            <td>
-                                                Chile
-                                            </td>
-                                            <td>
-                                                Gloucester
-                                            </td>
-                                            <td class="text-primary">
-                                                $78,615
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        $user = new users();
+                                        $res = $user->getAllUsers();
+                                        foreach ($res as $users) {
+
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $users['name'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $users['user_type'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $users['email'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= ($users['status'] == '1') ? "Activé" : "désactivé" ?>
+                                                </td>
+                                                <td class="text-primary">
+                                                    <?= $users['imageName'] ?>
+                                                </td>
+                                                <td class="text-primary">
+                                                    <a href=""><img alt="" src="assets/img/edit.svg"></a>
+                                                    <a href=""><img alt="" src="assets/img/delete.svg"></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

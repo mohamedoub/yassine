@@ -15,7 +15,7 @@ Class database
         return $this->pdo;
     }
 
-    public function requete($q, $params = false)
+    public function requete($q, $params = array())
     {
         if ($params) {
             $req = $this->pdo->prepare($q);

@@ -4,7 +4,7 @@
 class users
 {
     protected static $tableName = "tbl_users";
-    private $user_id;
+    private $user_id = 0;
     private $user_type;
     private $name;
     private $email;
@@ -12,22 +12,63 @@ class users
     private $status;
     private $imageName;
 
-    public function __construct()
+
+    function __construct()
+    {
+        $argv = func_get_args();
+        switch (func_num_args()) {
+            case 1 :
+                self::__construct1();
+                break;
+            case 2 :
+                self::__construct2($argv[0], $argv[1], $argv[2], $argv[3], $argv[4], $argv[5]);
+                break;
+
+        }
+
+    }
+
+    function __construct1()
     {
 
     }
 
-    public function addUser($query, $params)
+    function __construct2($user_type, $name, $email, $password, $status, $imageName)
     {
+        $this->user_type = $user_type;
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
+        $this->status = $status;
+        $this->imageName = $imageName;
+    }
 
-        $stmt = new database();
-        $stmt->requete($query, $params);
+//    public function __construct($user_type,$name,$email,$password,$status,$imageName) {
+//        $this->user_type = $user_type;
+//        $this->name = $name;
+//        $this->email = $email;
+//        $this->password = $password;
+//        $this->status = $status;
+//        $this->imageName = $imageName;
+//    }
+
+    public function addUser()
+    {
+        $param = ["$this->user_id", "$this->user_type", "$this->name", "$this->email", "$this->password", "$this->status", "$this->imageName"];
+        if ($param[1] !== '') {
+            $db = new database();
+            $sql = "INSERT INTO " . self::$tableName . " VALUES (?,?,?,?,?,?,?)";
+            $db->requete($sql, $param);
+            var_dump($param, $sql);
+        } else {
+            echo "dawi khawi";
+        }
+
     }
 
     public function getAllUsers()
     {
         $db = new database();
-        $tablename = static::$tableName;
-        return $db->requete("select * from $tablename")->fetchAll();
+        return $db->requete("select * from " . self::$tableName)->fetchAll();
     }
 }
